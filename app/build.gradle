@@ -31,17 +31,18 @@ configurations.all { config ->
             }
         }
     }
+    resolutionStrategy.force "com.android.support:exifinterface:$android_support_lib"
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation "com.android.support:appcompat-v7:$android_support_lib"
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
 
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
-    
+
     implementation "com.squareup.picasso:picasso:$picasso_version"
 
     // Tests
