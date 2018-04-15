@@ -4,7 +4,7 @@ import android.app.Application
 import com.squareup.leakcanary.LeakCanary
 
 /**
- * Created by jjshin on 4/15/18
+ * Created by Josh Shin on 4/15/18
  */
 
 class FilmedApp : Application() {
