@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -32,6 +30,12 @@ configurations.all { config ->
         }
     }
     resolutionStrategy.force "com.android.support:exifinterface:$android_support_lib"
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+android.buildTypes.each {
+    it.buildConfigField "String", "API_KEY", properties.getProperty("MOVIE_API_KEY") ?: ""
 }
 
 dependencies {
