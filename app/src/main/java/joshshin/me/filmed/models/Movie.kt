@@ -11,28 +11,28 @@ import java.util.*
 data class Movie(
         @SerializedName("vote_count")
         @Expose
-        private val voteCount: Int?,
+        val voteCount: Int?,
         @Expose
-        private val id: Int,
+        val id: Int?,
         @Expose
-        private val video: Boolean?,
+        val video: Boolean?,
         @SerializedName("vote_average")
         @Expose
-        private val voteAverage: Float?,
+        val voteAverage: Float?,
         @SerializedName("title")
         @Expose
-        private val title: String,
+        val title: String?,
         @Expose
-        private val popularity: Float?,
+        val popularity: Float?,
         @SerializedName("poster_path")
         @Expose
-        private val posterPath: String,
+        val posterPath: String,
         @SerializedName("backdrop_path")
         @Expose
-        private val backdropPath: String,
+        val backdropPath: String?,
         @Expose
-        private val overview: String,
+        val overview: String?,
         @SerializedName("release_date")
         @Expose
-        private val releaseDate: Date
+        val releaseDate: Date?
 )

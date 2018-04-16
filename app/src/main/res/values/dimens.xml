@@ -10,6 +10,4 @@
     <dimen name="type_small">10sp</dimen>
     <dimen name="type_regular">12sp</dimen>
     <dimen name="type_large">16sp</dimen>
-
-    <dimen name="original_ration">1:1</dimen>
 </resources>

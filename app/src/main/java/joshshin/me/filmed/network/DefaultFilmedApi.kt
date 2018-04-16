@@ -1,6 +1,7 @@
 package joshshin.me.filmed.network
 
 import joshshin.me.filmed.BuildConfig
+import joshshin.me.filmed.FilmedConstants.BASE_URL
 import joshshin.me.filmed.models.MoviesResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -12,11 +13,8 @@ import retrofit2.Retrofit
  * Created by Josh Shin on 4/15/18
  */
 
-class DefaultFilmedApi() : FilmedApi {
+class DefaultFilmedApi : FilmedApi {
     companion object {
-        private const val BASE_URL = "https://api.themoviedb.org/"
-        private const val BASE_IMAGE_URL = "https://image.tmdb.org/t/p/"
-
         private val loggingInterceptor =
                 HttpLoggingInterceptor().apply {
                     level = HttpLoggingInterceptor.Level.BASIC
