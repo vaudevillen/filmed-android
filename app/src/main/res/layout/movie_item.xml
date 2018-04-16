@@ -6,29 +6,37 @@
     android:layout_margin="@dimen/margin_xsmall"
     android:orientation="horizontal">
 
+    <android.support.constraint.Guideline
+        android:id="@+id/start_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_begin="@dimen/margin_xsmall"
+        android:orientation="vertical" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/end_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_end="@dimen/margin_xsmall"
+        android:orientation="vertical" />
+
     <ImageView
         android:id="@+id/backdrop_image"
-        android:layout_width="400dp"
-        android:layout_height="200dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/margin_xsmall"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/movie_details"
-        android:layout_width="400dp"
-        android:layout_height="200dp"
+    <include layout="@layout/movie_details"
+        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_margin="@dimen/margin_xsmall"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <include layout="@layout/movie_details"
-            android:layout_height="0dp"
-            android:layout_width="0dp"/>
-
-    </android.support.v4.widget.NestedScrollView>
+        app:layout_constraintStart_toEndOf="@id/start_guideline"
+        app:layout_constraintEnd_toStartOf="@id/end_guideline"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>
