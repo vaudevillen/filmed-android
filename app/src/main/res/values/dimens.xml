@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_xsmall">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_regular">16dp</dimen>
+    <dimen name="margin_large">32dp</dimen>
+    <dimen name="margin_xlarge">40dp</dimen>
+
+    <dimen name="type_xsmall">8sp</dimen>
+    <dimen name="type_small">10sp</dimen>
+    <dimen name="type_regular">12sp</dimen>
+    <dimen name="type_large">16sp</dimen>
+</resources>
