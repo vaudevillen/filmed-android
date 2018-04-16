@@ -19,7 +19,6 @@ data class Movie(
         @SerializedName("vote_average")
         @Expose
         val voteAverage: Float?,
-        @SerializedName("title")
         @Expose
         val title: String?,
         @Expose
