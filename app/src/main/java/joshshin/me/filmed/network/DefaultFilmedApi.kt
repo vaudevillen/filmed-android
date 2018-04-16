@@ -16,7 +16,6 @@ class DefaultFilmedApi() : FilmedApi {
     companion object {
         private const val BASE_URL = "https://api.themoviedb.org/"
         private const val BASE_IMAGE_URL = "https://image.tmdb.org/t/p/"
-        private val apiKey = BuildConfig.API_KEY
 
         private val loggingInterceptor =
                 HttpLoggingInterceptor().apply {
@@ -48,10 +47,10 @@ class DefaultFilmedApi() : FilmedApi {
     }
 
     override fun fetchPopularMovies(callback: Callback<MoviesResponse>) {
-        moviesService.getPopularMovies(apiKey).enqueue(callback)
+        moviesService.getPopularMovies().enqueue(callback)
     }
 
-    override fun searchMovies(query: String) {
+    override fun searchMovies(query: String, callback: Callback<MoviesResponse>) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

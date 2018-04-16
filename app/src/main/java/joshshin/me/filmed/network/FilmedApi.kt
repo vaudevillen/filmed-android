@@ -9,5 +9,5 @@ import retrofit2.Callback
 
 interface FilmedApi {
     fun fetchPopularMovies(callback: Callback<MoviesResponse>)
-    fun searchMovies(query: String)
+    fun searchMovies(query: String, callback: Callback<MoviesResponse>)
 }

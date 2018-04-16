@@ -1,5 +1,7 @@
 package joshshin.me.filmed.network
 
+import joshshin.me.filmed.FilmedConstants.POPULAR_MOVIES_PATH
+import joshshin.me.filmed.FilmedConstants.SEARCH_MOVIES_PATH
 import joshshin.me.filmed.models.MoviesResponse
 import retrofit2.Call
 import retrofit2.http.GET
@@ -10,7 +12,9 @@ import retrofit2.http.Query
  */
 
 interface MoviesService {
-    // TODO get rid of this api_key query and add it in an interceptor
-    @GET("3/movie/popular")
-    fun getPopularMovies(@Query("api_key") apiKey: String): Call<MoviesResponse>
+    @GET(POPULAR_MOVIES_PATH)
+    fun getPopularMovies(): Call<MoviesResponse>
+
+    @GET(SEARCH_MOVIES_PATH)
+    fun searchMovies(@Query("query") query: String) : Call<MoviesResponse>
 }
