@@ -8,14 +8,10 @@ import com.google.gson.annotations.SerializedName
  */
 
 data class MoviesResponse(
-        @Expose
         val page: Int?,
         @SerializedName("total_results")
-        @Expose
         val totalResults: Int?,
         @SerializedName("total_pages")
-        @Expose
         val totalPages: Int?,
-        @Expose
         val results: List<Movie>?
 )
