@@ -11,7 +11,6 @@ import joshshin.me.filmed.R
 import joshshin.me.filmed.adapters.MoviesAdapter.MoviesViewHolder
 import joshshin.me.filmed.models.Movie
 import joshshin.me.filmed.models.MoviesResponse
-import joshshin.me.filmed.network.DefaultFilmedApi
 import joshshin.me.filmed.network.FilmedApi
 import kotlinx.android.synthetic.main.movie_item.view.*
 import retrofit2.Call
@@ -23,9 +22,6 @@ import retrofit2.Response
  */
 
 class MoviesAdapter(private val context: Context) : RecyclerView.Adapter<MoviesViewHolder>() {
-
-    private val filmedApi: FilmedApi = DefaultFilmedApi()
-
     private var movies: List<Movie> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
@@ -45,20 +41,23 @@ class MoviesAdapter(private val context: Context) : RecyclerView.Adapter<MoviesV
         super.onAttachedToRecyclerView(recyclerView)
         fetchMovies()
     }
-    private fun fetchMovies() {
-        filmedApi.fetchPopularMovies(object : Callback<MoviesResponse> {
-            override fun onFailure(call: Call<MoviesResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
 
-            override fun onResponse(call: Call<MoviesResponse>?, response: Response<MoviesResponse>?) {
-                response?.body()?.let {
-                    val moviesResponse: MoviesResponse = it
-                    if (it.results != null) movies = it.results
-                    notifyDataSetChanged()
-                }
-            }
-        })
+    private fun fetchMovies() {
+        FilmedApi.moviesService.getPopularMovies()
+                .enqueue(object : Callback<MoviesResponse> {
+                    override fun onFailure(call: Call<MoviesResponse>?, t: Throwable?) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+
+                    override fun onResponse(call: Call<MoviesResponse>?, response: Response<MoviesResponse>?) {
+                        response?.body()?.let {
+                            val moviesResponse: MoviesResponse = it
+                            if (it.results != null) movies = it.results
+                            notifyDataSetChanged()
+                        }
+                    }
+                })
     }
+
     class MoviesViewHolder(view: View) : RecyclerView.ViewHolder(view)
 }
