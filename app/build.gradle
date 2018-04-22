@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-apply from: '../gradle/android_common.gradle'
+apply from: '../gradle/common.gradle'
 
 // Ensure the no-op dependency is always used in JVM tests.
 configurations.all { config ->
