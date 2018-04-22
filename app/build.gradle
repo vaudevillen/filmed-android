@@ -29,11 +29,17 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation "com.android.support:recyclerview-v7:$android_support_lib"
 
+    api project(':filmeddomain')
+    api project(':filmeddata')
+
+    //Leak Canary
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
 
+    //Picasso
     implementation "com.squareup.picasso:picasso:$picasso_version"
 
+    //Rx
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
 

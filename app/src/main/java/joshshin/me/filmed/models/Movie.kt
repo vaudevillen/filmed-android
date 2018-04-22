@@ -1,7 +1,7 @@
 package joshshin.me.filmed.models
 
-import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import joshshin.me.filmeddomain.models.FilmedMovie
 import java.util.*
 
 /**
@@ -10,18 +10,18 @@ import java.util.*
 
 data class Movie(
         @SerializedName("vote_count")
-        val voteCount: Int?,
-        val id: Int?,
-        val video: Boolean?,
+        override val voteCount: Int?,
+        override val id: Int?,
+        override val video: Boolean?,
         @SerializedName("vote_average")
-        val voteAverage: Float?,
-        val title: String?,
-        val popularity: Float?,
+        override val voteAverage: Float?,
+        override val title: String?,
+        override val popularity: Float?,
         @SerializedName("poster_path")
-        val posterPath: String,
+        override val posterPath: String,
         @SerializedName("backdrop_path")
-        val backdropPath: String?,
-        val overview: String?,
+        override val backdropPath: String?,
+        override val overview: String?,
         @SerializedName("release_date")
-        val releaseDate: Date?
-)
+        override val releaseDate: Date?
+) : FilmedMovie
