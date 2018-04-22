@@ -33,10 +33,7 @@ internal object FilmedApi {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-    // this is most likely overkill, but adding this method just in case there are other kinds of services
-    private fun <S> createService(clazz: Class<S>): S {
-        return retrofit.create(clazz)
+    inline fun <reified S> createService(): S {
+        return retrofit.create(S::class.java)
     }
-
-    val moviesService = createService(MoviesService::class.java)
 }
