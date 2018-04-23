@@ -16,7 +16,6 @@ import retrofit2.Response
  */
 
 class MoviesProvider : DataProvider<List<FilmedMovie>> {
-
     private val moviesClient = FilmedApi.createService<MoviesService>()
 
     override fun provideData(callback: DataCallback<List<FilmedMovie>>) {

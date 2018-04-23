@@ -16,11 +16,11 @@ class MoviesRepo : DataRepository<List<FilmedMovie>>, ViewModel() {
         const val FIVE_MINUTES = 5 * 60 * 1000
     }
 
-    var movies: List<FilmedMovie> = listOf()
-
-    private var lastUpdate = Instant.now().getLong(ChronoField.MILLI_OF_SECOND)
+    private var movies: List<FilmedMovie> = listOf()
 
     override val provider = MoviesProvider()
+
+    private var lastUpdate = Instant.now().getLong(ChronoField.MILLI_OF_SECOND)
 
     private fun isUpdateTimeExpired(): Boolean {
         val now = Instant.now().getLong(ChronoField.MILLI_OF_SECOND)
