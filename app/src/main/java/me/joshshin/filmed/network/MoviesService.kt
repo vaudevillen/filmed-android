@@ -1,8 +1,8 @@
-package joshshin.me.filmed.network
+package me.joshshin.filmed.network
 
-import joshshin.me.filmed.FilmedConstants.POPULAR_MOVIES_PATH
-import joshshin.me.filmed.FilmedConstants.SEARCH_MOVIES_PATH
-import joshshin.me.filmed.models.MoviesResponse
+import me.joshshin.filmed.FilmedConstants.POPULAR_MOVIES_PATH
+import me.joshshin.filmed.FilmedConstants.SEARCH_MOVIES_PATH
+import me.joshshin.filmed.models.MoviesResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

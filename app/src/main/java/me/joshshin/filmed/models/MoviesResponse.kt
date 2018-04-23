@@ -1,7 +1,7 @@
-package joshshin.me.filmed.models
+package me.joshshin.filmed.models
 
 import com.google.gson.annotations.SerializedName
-import joshshin.me.filmeddomain.models.FilmedMoviesResponse
+import me.joshshin.filmeddomain.models.FilmedMoviesResponse
 
 /**
  * Created by Josh Shin on 4/15/18

@@ -1,9 +1,9 @@
-package joshshin.me.filmed.models
+package me.joshshin.filmed.models
 
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import joshshin.me.filmeddomain.models.FilmedMovie
+import me.joshshin.filmeddomain.models.FilmedMovie
 import java.util.*
 
 /**
@@ -20,7 +20,7 @@ data class Movie(
         override val title: String?,
         override val popularity: Float?,
         @SerializedName("poster_path")
-        override val posterPath: String,
+        override val posterPath: String?,
         @SerializedName("backdrop_path")
         override val backdropPath: String?,
         override val overview: String?,

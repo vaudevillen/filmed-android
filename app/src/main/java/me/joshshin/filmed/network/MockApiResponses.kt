@@ -1,4 +1,4 @@
-package joshshin.me.filmed.network
+package me.joshshin.filmed.network
 
 /**
  * Created by Josh Shin on 4/15/18

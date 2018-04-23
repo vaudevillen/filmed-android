@@ -1,4 +1,4 @@
-package joshshin.me.filmeddomain.models
+package me.joshshin.filmeddomain.models
 
 import java.util.*
 
@@ -12,7 +12,7 @@ interface FilmedMovie {
     val voteAverage: Float?
     val title: String?
     val popularity: Float?
-    val posterPath: String
+    val posterPath: String?
     val backdropPath: String?
     val overview: String?
     val releaseDate: Date?

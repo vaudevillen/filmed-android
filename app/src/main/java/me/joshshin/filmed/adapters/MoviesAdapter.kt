@@ -1,4 +1,4 @@
-package joshshin.me.filmed.adapters
+package me.joshshin.filmed.adapters
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -7,13 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.squareup.picasso.Picasso
-import joshshin.me.filmed.FilmedConstants.BASE_IMAGE_URL
-import joshshin.me.filmed.R
-import joshshin.me.filmed.adapters.MoviesAdapter.MoviesViewHolder
-import joshshin.me.filmed.dataRepo.MoviesRepo
-import joshshin.me.filmed.models.Movie
-import joshshin.me.filmeddata.DataCallback
-import joshshin.me.filmeddata.DataCallbackException
+import me.joshshin.filmed.FilmedConstants.BASE_IMAGE_URL
+import me.joshshin.filmed.R
+import me.joshshin.filmed.adapters.MoviesAdapter.MoviesViewHolder
+import me.joshshin.filmed.dataRepo.MoviesRepo
+import me.joshshin.filmed.models.Movie
+import me.joshshin.filmeddata.DataCallback
+import me.joshshin.filmeddata.DataCallbackException
 import kotlinx.android.synthetic.main.movie_item.view.*
 
 /**
