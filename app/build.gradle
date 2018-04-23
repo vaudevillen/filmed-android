@@ -29,8 +29,10 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation "com.android.support:recyclerview-v7:$android_support_lib"
 
-    api project(':filmeddomain')
-    api project(':filmeddata')
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.1.0'
+
+    implementation project(':filmeddata')
+    implementation project(':filmeddomain')
 
     //Leak Canary
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"

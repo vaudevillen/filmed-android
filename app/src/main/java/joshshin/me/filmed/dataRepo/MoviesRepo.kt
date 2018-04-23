@@ -1,9 +1,9 @@
 package joshshin.me.filmed.dataRepo
 
 import android.arch.lifecycle.ViewModel
+import joshshin.me.filmed.models.Movie
 import joshshin.me.filmeddata.DataCallback
 import joshshin.me.filmeddata.DataRepository
-import joshshin.me.filmeddomain.models.FilmedMovie
 import org.threeten.bp.Instant
 import org.threeten.bp.temporal.ChronoField
 
@@ -11,12 +11,12 @@ import org.threeten.bp.temporal.ChronoField
  * Created by Josh Shin on 4/22/18
  */
 
-class MoviesRepo : DataRepository<List<FilmedMovie>>, ViewModel() {
+class MoviesRepo : DataRepository<List<Movie>>, ViewModel() {
     companion object {
         const val FIVE_MINUTES = 5 * 60 * 1000
     }
 
-    private var movies: List<FilmedMovie> = listOf()
+    private var movies: List<Movie> = listOf()
 
     override val provider = MoviesProvider()
 
@@ -28,7 +28,7 @@ class MoviesRepo : DataRepository<List<FilmedMovie>>, ViewModel() {
         return timeElapsed > FIVE_MINUTES
     }
 
-    fun getMovies(callback: DataCallback<List<FilmedMovie>>) {
+    fun getMovies(callback: DataCallback<List<Movie>>) {
         if (movies.isEmpty() || isUpdateTimeExpired()) {
             fetchData(callback)
         } else {
@@ -36,7 +36,7 @@ class MoviesRepo : DataRepository<List<FilmedMovie>>, ViewModel() {
         }
     }
 
-    fun refreshMovies(callback: DataCallback<List<FilmedMovie>>) {
+    fun refreshMovies(callback: DataCallback<List<Movie>>) {
         fetchData(callback)
     }
 

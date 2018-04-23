@@ -1,12 +1,12 @@
 package joshshin.me.filmed.dataRepo
 
+import joshshin.me.filmed.models.Movie
 import joshshin.me.filmed.models.MoviesResponse
 import joshshin.me.filmed.network.FilmedApi
 import joshshin.me.filmed.network.MoviesService
 import joshshin.me.filmeddata.DataCallback
 import joshshin.me.filmeddata.DataCallbackException
 import joshshin.me.filmeddata.DataProvider
-import joshshin.me.filmeddomain.models.FilmedMovie
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,10 +15,10 @@ import retrofit2.Response
  * Created by Josh Shin on 4/21/18
  */
 
-class MoviesProvider : DataProvider<List<FilmedMovie>> {
+class MoviesProvider : DataProvider<List<Movie>> {
     private val moviesClient = FilmedApi.createService<MoviesService>()
 
-    override fun provideData(callback: DataCallback<List<FilmedMovie>>) {
+    override fun provideData(callback: DataCallback<List<Movie>>) {
         moviesClient.getPopularMovies().enqueue(object : Callback<MoviesResponse> {
             override fun onFailure(call: Call<MoviesResponse>?, t: Throwable?) {
                 callback.onError(MovieProviderException(t?.message?: "api failure"))
