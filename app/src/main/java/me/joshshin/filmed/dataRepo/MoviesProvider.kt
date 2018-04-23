@@ -1,12 +1,12 @@
 package me.joshshin.filmed.dataRepo
 
-import me.joshshin.filmed.models.Movie
-import me.joshshin.filmed.models.MoviesResponse
 import me.joshshin.filmed.network.FilmedApi
 import me.joshshin.filmed.network.MoviesService
 import me.joshshin.filmeddata.DataCallback
 import me.joshshin.filmeddata.DataCallbackException
 import me.joshshin.filmeddata.DataProvider
+import me.joshshin.filmeddomain.models.Movie
+import me.joshshin.filmeddomain.models.MoviesResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

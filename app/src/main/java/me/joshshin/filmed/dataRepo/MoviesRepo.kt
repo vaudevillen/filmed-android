@@ -1,9 +1,9 @@
 package me.joshshin.filmed.dataRepo
 
 import android.arch.lifecycle.ViewModel
-import me.joshshin.filmed.models.Movie
 import me.joshshin.filmeddata.DataCallback
 import me.joshshin.filmeddata.DataRepository
+import me.joshshin.filmeddomain.models.Movie
 import org.threeten.bp.Instant
 import org.threeten.bp.temporal.ChronoField
 

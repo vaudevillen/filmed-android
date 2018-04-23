@@ -2,4 +2,7 @@ apply plugin: 'com.android.library'
 
 apply from: '../gradle/common.gradle'
 
-
+dependencies {
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.1.0'
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+}

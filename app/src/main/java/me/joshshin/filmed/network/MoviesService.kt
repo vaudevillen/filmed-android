@@ -2,7 +2,7 @@ package me.joshshin.filmed.network
 
 import me.joshshin.filmed.FilmedConstants.POPULAR_MOVIES_PATH
 import me.joshshin.filmed.FilmedConstants.SEARCH_MOVIES_PATH
-import me.joshshin.filmed.models.MoviesResponse
+import me.joshshin.filmeddomain.models.MoviesResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
