@@ -1,30 +1,32 @@
-package me.joshshin.filmeddomain.models
+package me.joshshin.filmeddata.models
 
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import me.joshshin.filmeddomain.models.FilmedMovie
 import org.threeten.bp.LocalDate
 
 /**
  * Created by Josh Shin on 4/22/18
  */
+
 data class Movie(
         @SerializedName("vote_count")
-        val voteCount: Int?,
-        val id: Int?,
-        val video: Boolean?,
+        override val voteCount: Int?,
+        override val id: Int?,
+        override val video: Boolean?,
         @SerializedName("vote_average")
-        val voteAverage: Float?,
-        val title: String?,
-        val popularity: Float?,
+        override val voteAverage: Float?,
+        override val title: String?,
+        override val popularity: Float?,
         @SerializedName("poster_path")
-        val posterPath: String?,
+        override val posterPath: String?,
         @SerializedName("backdrop_path")
-        val backdropPath: String?,
-        val overview: String?,
+        override val backdropPath: String?,
+        override val overview: String?,
         @SerializedName("release_date")
-        val releaseDate: LocalDate?
-) : Parcelable {
+        override val releaseDate: LocalDate?
+) : FilmedMovie, Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readInt(),
             parcel.readInt(),
@@ -38,12 +40,12 @@ data class Movie(
             LocalDate.parse(parcel.readString())
     )
 
-    companion object CREATOR : Parcelable.Creator<Movie> {
-        override fun createFromParcel(parcel: Parcel): Movie {
+    companion object CREATOR : Parcelable.Creator<FilmedMovie> {
+        override fun createFromParcel(parcel: Parcel): FilmedMovie {
             return Movie(parcel)
         }
 
-        override fun newArray(size: Int): Array<Movie?> {
+        override fun newArray(size: Int): Array<FilmedMovie?> {
             return arrayOfNulls(size)
         }
     }

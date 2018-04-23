@@ -1,14 +1,14 @@
-package me.joshshin.filmed.network
+package me.joshshin.filmeddata.network
 
-import me.joshshin.filmed.BuildConfig
-import me.joshshin.filmed.FilmedConstants.BASE_URL
+import me.joshshin.filmeddata.BuildConfig
+import me.joshshin.filmeddata.network.FilmedApiConstants.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 /**
- * Created by Josh Shin on 4/15/18
+ * Created by Josh Shin on 4/22/18
  */
 
 internal object FilmedApi {

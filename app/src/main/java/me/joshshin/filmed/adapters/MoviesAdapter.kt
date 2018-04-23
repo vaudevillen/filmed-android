@@ -7,21 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.squareup.picasso.Picasso
-import me.joshshin.filmed.FilmedConstants.BASE_IMAGE_URL
 import me.joshshin.filmed.R
 import me.joshshin.filmed.adapters.MoviesAdapter.MoviesViewHolder
 import me.joshshin.filmed.dataRepo.MoviesRepo
-import me.joshshin.filmed.models.Movie
 import me.joshshin.filmeddata.DataCallback
 import me.joshshin.filmeddata.DataCallbackException
 import kotlinx.android.synthetic.main.movie_item.view.*
+import me.joshshin.filmeddata.network.FilmedApiConstants.BASE_IMAGE_URL
+import me.joshshin.filmeddomain.models.FilmedMovie
 
 /**
  * Created by Josh Shin on 4/15/18
  */
 
 class MoviesAdapter(private val context: Context, private val repo: MoviesRepo) : RecyclerView.Adapter<MoviesViewHolder>() {
-    private var movies: List<Movie> = listOf()
+    private var movies: List<FilmedMovie> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false)
@@ -36,9 +36,9 @@ class MoviesAdapter(private val context: Context, private val repo: MoviesRepo) 
         Picasso.get().load(BASE_IMAGE_URL + movie.backdropPath).into(holder.itemView.backdrop_image)
     }
 
-    private fun generateMoviesCallback(): DataCallback<List<Movie>> {
-        return object : DataCallback<List<Movie>> {
-            override fun onComplete(data: List<Movie>) {
+    private fun generateMoviesCallback(): DataCallback<List<FilmedMovie>> {
+        return object : DataCallback<List<FilmedMovie>> {
+            override fun onComplete(data: List<FilmedMovie>) {
                 movies = data
                 notifyDataSetChanged()
             }

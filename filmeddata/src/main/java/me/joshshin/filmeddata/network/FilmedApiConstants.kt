@@ -1,10 +1,12 @@
-package me.joshshin.filmed
+package me.joshshin.filmeddata.network
+
+import me.joshshin.filmeddata.BuildConfig
 
 /**
- * Created by Josh Shin on 4/15/18
+ * Created by Josh Shin on 4/22/18
  */
 
-internal object FilmedConstants {
+object FilmedApiConstants {
     const val BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w780/"
     const val BASE_URL = "https://api.themoviedb.org/"
     private const val API_VERSION = "3/"
