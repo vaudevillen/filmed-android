@@ -10,10 +10,10 @@ import com.squareup.picasso.Picasso
 import me.joshshin.filmed.R
 import me.joshshin.filmed.adapters.MoviesAdapter.MoviesViewHolder
 import me.joshshin.filmed.dataRepo.MoviesRepo
-import me.joshshin.filmeddata.DataCallback
-import me.joshshin.filmeddata.DataCallbackException
+import me.joshshin.datalayer.DataCallback
+import me.joshshin.datalayer.DataCallbackException
 import kotlinx.android.synthetic.main.movie_item.view.*
-import me.joshshin.filmeddata.network.FilmedApiConstants.BASE_IMAGE_URL
+import me.joshshin.filmed.network.FilmedApiConstants.BASE_IMAGE_URL
 import me.joshshin.filmeddomain.models.FilmedMovie
 
 /**

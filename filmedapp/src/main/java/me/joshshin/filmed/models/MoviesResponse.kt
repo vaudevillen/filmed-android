@@ -1,4 +1,4 @@
-package me.joshshin.filmeddata.models
+package me.joshshin.filmed.models
 
 import com.google.gson.annotations.SerializedName
 import me.joshshin.filmeddomain.models.FilmedMovie

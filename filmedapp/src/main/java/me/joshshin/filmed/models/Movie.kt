@@ -1,4 +1,4 @@
-package me.joshshin.filmeddata.models
+package me.joshshin.filmed.models
 
 import android.os.Parcel
 import android.os.Parcelable

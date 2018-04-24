@@ -1,44 +1,21 @@
 package me.joshshin.filmed.dataRepo
 
 import android.arch.lifecycle.ViewModel
-import me.joshshin.filmeddata.DataCallback
-import me.joshshin.filmeddata.DataRepository
-import me.joshshin.filmeddata.MoviesProvider
+import me.joshshin.datalayer.DataCallback
+import me.joshshin.datalayer.DataRepository
 import me.joshshin.filmeddomain.models.FilmedMovie
-import org.threeten.bp.Instant
-import org.threeten.bp.temporal.ChronoField
 
 /**
  * Created by Josh Shin on 4/22/18
  */
 
+// TODO have this implement ViewModel goodness so data survives configuration changes.
 class MoviesRepo : DataRepository<List<FilmedMovie>>, ViewModel() {
-    companion object {
-        const val FIVE_MINUTES = 5 * 60 * 1000
-    }
-
     private var movies: List<FilmedMovie> = listOf()
 
     override val provider = MoviesProvider()
 
-    private var lastUpdate = Instant.now().getLong(ChronoField.MILLI_OF_SECOND)
-
-    private fun isUpdateTimeExpired(): Boolean {
-        val now = Instant.now().getLong(ChronoField.MILLI_OF_SECOND)
-        val timeElapsed = now - lastUpdate
-        return timeElapsed > FIVE_MINUTES
-    }
-
     fun getMovies(callback: DataCallback<List<FilmedMovie>>) {
-        if (movies.isEmpty() || isUpdateTimeExpired()) {
-            fetchData(callback)
-        } else {
-            callback.onComplete(movies)
-        }
-    }
-
-    fun refreshMovies(callback: DataCallback<List<FilmedMovie>>) {
         fetchData(callback)
     }
-
 }
