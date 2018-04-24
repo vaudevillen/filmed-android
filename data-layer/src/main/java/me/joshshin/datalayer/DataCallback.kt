@@ -9,4 +9,4 @@ interface DataCallback<in T> {
     fun onError(error: DataCallbackException)
 }
 
-interface DataCallbackException
+class DataCallbackException(override val message: String?) : Exception(message)

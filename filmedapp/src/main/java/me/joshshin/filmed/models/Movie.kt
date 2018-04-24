@@ -4,7 +4,6 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import me.joshshin.filmeddomain.models.FilmedMovie
-import org.threeten.bp.LocalDate
 
 /**
  * Created by Josh Shin on 4/22/18
@@ -25,7 +24,7 @@ data class Movie(
         override val backdropPath: String?,
         override val overview: String?,
         @SerializedName("release_date")
-        override val releaseDate: LocalDate?
+        override val releaseDate: String?
 ) : FilmedMovie, Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readInt(),
@@ -37,7 +36,7 @@ data class Movie(
             parcel.readString(),
             parcel.readString(),
             parcel.readString(),
-            LocalDate.parse(parcel.readString())
+            parcel.readString()
     )
 
     companion object CREATOR : Parcelable.Creator<FilmedMovie> {
@@ -60,7 +59,7 @@ data class Movie(
         parcel.writeString(posterPath?: "")
         parcel.writeString(backdropPath?: "")
         parcel.writeString(overview?: "")
-        parcel.writeString(releaseDate?.toString()?: "")
+        parcel.writeString(releaseDate?: "")
     }
 
     override fun describeContents() = 0

@@ -1,8 +1,8 @@
 package me.joshshin.filmed.network
 
+import me.joshshin.filmed.models.MoviesResponse
 import me.joshshin.filmed.network.FilmedApiConstants.POPULAR_MOVIES_PATH
 import me.joshshin.filmed.network.FilmedApiConstants.SEARCH_MOVIES_PATH
-import me.joshshin.filmeddomain.models.FilmedMoviesResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -13,8 +13,8 @@ import retrofit2.http.Query
 
 interface  MoviesService {
     @GET(POPULAR_MOVIES_PATH)
-    fun getPopularMovies(): Call<FilmedMoviesResponse>
+    fun getPopularMovies(): Call<MoviesResponse>
 
     @GET(SEARCH_MOVIES_PATH)
-    fun searchMovies(@Query("query") query: String) : Call<FilmedMoviesResponse>
+    fun searchMovies(@Query("query") query: String) : Call<MoviesResponse>
 }

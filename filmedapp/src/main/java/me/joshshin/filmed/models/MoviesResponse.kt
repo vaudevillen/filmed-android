@@ -1,7 +1,6 @@
 package me.joshshin.filmed.models
 
 import com.google.gson.annotations.SerializedName
-import me.joshshin.filmeddomain.models.FilmedMovie
 import me.joshshin.filmeddomain.models.FilmedMoviesResponse
 
 /**
@@ -14,5 +13,5 @@ data class MoviesResponse(
         override val totalResults: Int?,
         @SerializedName("total_pages")
         override val totalPages: Int?,
-        override val results: List<FilmedMovie>?
+        override val results: List<Movie>?
 ) : FilmedMoviesResponse

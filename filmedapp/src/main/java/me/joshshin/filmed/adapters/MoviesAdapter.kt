@@ -2,6 +2,7 @@ package me.joshshin.filmed.adapters
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +10,11 @@ import android.widget.Toast
 import com.squareup.picasso.Picasso
 import me.joshshin.filmed.R
 import me.joshshin.filmed.adapters.MoviesAdapter.MoviesViewHolder
-import me.joshshin.filmed.dataRepo.MoviesRepo
 import me.joshshin.datalayer.DataCallback
 import me.joshshin.datalayer.DataCallbackException
 import kotlinx.android.synthetic.main.movie_item.view.*
+import me.joshshin.filmed.BuildConfig
+import me.joshshin.filmed.data_layer.MoviesProvider
 import me.joshshin.filmed.network.FilmedApiConstants.BASE_IMAGE_URL
 import me.joshshin.filmeddomain.models.FilmedMovie
 
@@ -20,8 +22,10 @@ import me.joshshin.filmeddomain.models.FilmedMovie
  * Created by Josh Shin on 4/15/18
  */
 
-class MoviesAdapter(private val context: Context, private val repo: MoviesRepo) : RecyclerView.Adapter<MoviesViewHolder>() {
+class MoviesAdapter(private val context: Context) : RecyclerView.Adapter<MoviesViewHolder>() {
     private var movies: List<FilmedMovie> = listOf()
+
+    private val moviesProvider = MoviesProvider()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false)
@@ -44,11 +48,14 @@ class MoviesAdapter(private val context: Context, private val repo: MoviesRepo) 
             }
             override fun onError(error: DataCallbackException) {
                 Toast.makeText(context, "Error downloading movies", Toast.LENGTH_LONG).show()
+                if (BuildConfig.DEBUG) {
+                    Log.e("Fetch Movies", error.message)
+                }
             }
         }
     }
     private fun fetchMovies() {
-        repo.getMovies(generateMoviesCallback())
+        moviesProvider.provideData(generateMoviesCallback())
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {

@@ -1,6 +1,6 @@
 package me.joshshin.filmed.network
 
-import me.joshshin.datalayer.BuildConfig
+import me.joshshin.filmed.BuildConfig
 
 /**
  * Created by Josh Shin on 4/22/18

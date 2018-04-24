@@ -1,10 +1,5 @@
 package me.joshshin.filmeddomain.models
 
-import android.os.Parcel
-import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
-import org.threeten.bp.LocalDate
-
 /**
  * Created by Josh Shin on 4/22/18
  */
@@ -18,5 +13,5 @@ interface FilmedMovie {
         val posterPath: String?
         val backdropPath: String?
         val overview: String?
-        val releaseDate: LocalDate?
+        val releaseDate: String?
 }
