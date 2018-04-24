@@ -2,23 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-android {
-    compileSdkVersion 27
-    defaultConfig {
-        applicationId "joshshin.me.filmed"
-        minSdkVersion 19
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
+apply from: '../gradle/common.gradle'
 
 // Ensure the no-op dependency is always used in JVM tests.
 configurations.all { config ->
@@ -32,31 +16,25 @@ configurations.all { config ->
     resolutionStrategy.force "com.android.support:exifinterface:$android_support_lib"
 }
 
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-android.buildTypes.each {
-    it.buildConfigField "String", "API_KEY", properties.getProperty("MOVIE_API_KEY") ?: ""
-}
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.android.support:appcompat-v7:$android_support_lib"
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation "com.android.support:recyclerview-v7:$android_support_lib"
 
+    implementation project(':data-layer')
+
+    //Leak Canary
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
     releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
 
+    //Picasso
     implementation "com.squareup.picasso:picasso:$picasso_version"
 
+    //Rx
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
-
-    // Network
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
 
     // Tests
     testImplementation 'junit:junit:4.12'

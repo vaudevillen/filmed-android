@@ -1,4 +1,4 @@
-package joshshin.me.filmed
+package me.joshshin.filmed
 
 import android.app.Application
 import com.squareup.leakcanary.LeakCanary
