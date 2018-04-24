@@ -10,7 +10,7 @@ android.buildTypes.each {
 }
 
 dependencies {
-    implementation project(':filmeddomain')
+    api project(':domain')
 
     //Network
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"

@@ -1,4 +1,4 @@
-package me.joshshin.filmeddomain.dataProvider
+package me.joshshin.domain.dataProvider
 
 /**
  * Created by Josh Shin on 4/22/18

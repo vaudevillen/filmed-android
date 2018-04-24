@@ -1,6 +1,4 @@
-package me.joshshin.filmeddomain.models
-
-import com.google.gson.annotations.SerializedName
+package me.joshshin.domain.models
 
 /**
  * Created by Josh Shin on 4/22/18

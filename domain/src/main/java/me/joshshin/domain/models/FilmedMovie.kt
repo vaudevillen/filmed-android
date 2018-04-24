@@ -1,4 +1,4 @@
-package me.joshshin.filmeddomain.models
+package me.joshshin.domain.models
 
 /**
  * Created by Josh Shin on 4/22/18

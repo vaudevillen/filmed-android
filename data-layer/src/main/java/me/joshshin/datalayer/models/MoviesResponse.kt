@@ -1,7 +1,7 @@
 package me.joshshin.datalayer.models
 
 import com.google.gson.annotations.SerializedName
-import me.joshshin.filmeddomain.models.FilmedMoviesResponse
+import me.joshshin.domain.models.FilmedMoviesResponse
 
 /**
  * Created by Josh Shin on 4/22/18

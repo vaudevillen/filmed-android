@@ -3,7 +3,7 @@ package me.joshshin.datalayer.models
 import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import me.joshshin.filmeddomain.models.FilmedMovie
+import me.joshshin.domain.models.FilmedMovie
 
 /**
  * Created by Josh Shin on 4/22/18

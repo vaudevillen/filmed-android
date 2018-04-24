@@ -1,7 +1,6 @@
 package me.joshshin.filmed
 
 import android.app.Application
-import com.jakewharton.threetenabp.AndroidThreeTen
 import com.squareup.leakcanary.LeakCanary
 
 /**
@@ -17,7 +16,5 @@ class FilmedApp : Application() {
             return
         }
         LeakCanary.install(this)
-
-        AndroidThreeTen.init(this)
     }
 }

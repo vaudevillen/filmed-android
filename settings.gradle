@@ -1,1 +1,1 @@
-include ':filmedapp', ':filmeddomain', ':data-layer'
+include ':app', ':domain', ':data-layer'
