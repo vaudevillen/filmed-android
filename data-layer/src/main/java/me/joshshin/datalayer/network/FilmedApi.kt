@@ -1,7 +1,7 @@
-package me.joshshin.filmed.network
+package me.joshshin.datalayer.network
 
-import me.joshshin.filmed.BuildConfig
-import me.joshshin.filmed.network.FilmedApiConstants.BASE_URL
+import me.joshshin.datalayer.BuildConfig
+import me.joshshin.datalayer.network.FilmedApiConstants.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

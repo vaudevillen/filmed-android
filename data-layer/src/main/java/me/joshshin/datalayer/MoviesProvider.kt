@@ -1,11 +1,11 @@
-package me.joshshin.filmed.data_layer
+package me.joshshin.datalayer
 
-import me.joshshin.datalayer.DataCallback
-import me.joshshin.datalayer.DataCallbackException
-import me.joshshin.datalayer.DataProvider
-import me.joshshin.filmed.models.MoviesResponse
-import me.joshshin.filmed.network.FilmedApi
-import me.joshshin.filmed.network.MoviesService
+import me.joshshin.datalayer.models.MoviesResponse
+import me.joshshin.datalayer.network.FilmedApi
+import me.joshshin.datalayer.network.MoviesService
+import me.joshshin.filmeddomain.dataProvider.DataCallback
+import me.joshshin.filmeddomain.dataProvider.DataCallbackException
+import me.joshshin.filmeddomain.dataProvider.DataProvider
 import me.joshshin.filmeddomain.models.FilmedMovie
 import retrofit2.Call
 import retrofit2.Callback

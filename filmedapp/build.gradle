@@ -16,12 +16,6 @@ configurations.all { config ->
     resolutionStrategy.force "com.android.support:exifinterface:$android_support_lib"
 }
 
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-android.buildTypes.each {
-    it.buildConfigField "String", "API_KEY", properties.getProperty("MOVIE_API_KEY") ?: ""
-}
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
@@ -44,11 +38,6 @@ dependencies {
     //Rx
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
     implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
-
-    //Network
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
 
     // Tests
     testImplementation 'junit:junit:4.12'

@@ -10,12 +10,12 @@ import android.widget.Toast
 import com.squareup.picasso.Picasso
 import me.joshshin.filmed.R
 import me.joshshin.filmed.adapters.MoviesAdapter.MoviesViewHolder
-import me.joshshin.datalayer.DataCallback
-import me.joshshin.datalayer.DataCallbackException
+import me.joshshin.filmeddomain.dataProvider.DataCallback
+import me.joshshin.filmeddomain.dataProvider.DataCallbackException
 import kotlinx.android.synthetic.main.movie_item.view.*
 import me.joshshin.filmed.BuildConfig
-import me.joshshin.filmed.data_layer.MoviesProvider
-import me.joshshin.filmed.network.FilmedApiConstants.BASE_IMAGE_URL
+import me.joshshin.datalayer.MoviesProvider
+import me.joshshin.datalayer.network.FilmedApiConstants.BASE_IMAGE_URL
 import me.joshshin.filmeddomain.models.FilmedMovie
 
 /**
