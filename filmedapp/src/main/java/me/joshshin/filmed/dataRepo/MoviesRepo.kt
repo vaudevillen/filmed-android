@@ -16,6 +16,7 @@ class MoviesRepo : DataRepository<List<FilmedMovie>>, ViewModel() {
     override val provider = MoviesProvider()
 
     fun getMovies(callback: DataCallback<List<FilmedMovie>>) {
+        // TODO I'm not totally a fan of how this is looking so far...
         fetchData(callback)
     }
 }
