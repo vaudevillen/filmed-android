@@ -14,9 +14,9 @@ import me.joshshin.domain.dataProvider.DataCallback
 import me.joshshin.domain.dataProvider.DataCallbackException
 import kotlinx.android.synthetic.main.movie_item.view.*
 import me.joshshin.filmed.BuildConfig
-import me.joshshin.datalayer.MoviesProvider
 import me.joshshin.datalayer.network.FilmedApiConstants.BASE_IMAGE_URL
 import me.joshshin.domain.models.FilmedMovie
+import me.joshshin.filmed.FilmedConfig
 
 /**
  * Created by Josh Shin on 4/15/18
@@ -24,8 +24,6 @@ import me.joshshin.domain.models.FilmedMovie
 
 class MoviesAdapter(private val context: Context) : RecyclerView.Adapter<MoviesViewHolder>() {
     private var movies: List<FilmedMovie> = listOf()
-
-    private val moviesProvider = MoviesProvider()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false)
@@ -55,7 +53,7 @@ class MoviesAdapter(private val context: Context) : RecyclerView.Adapter<MoviesV
         }
     }
     private fun fetchMovies() {
-        moviesProvider.provideData(generateMoviesCallback())
+        FilmedConfig.moviesProvider.provideData(generateMoviesCallback())
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
