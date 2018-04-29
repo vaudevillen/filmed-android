@@ -14,6 +14,8 @@ class MoviesActivity : AppCompatActivity() {
 
         movies_recycler.adapter = MoviesAdapter(this)
         movies_recycler.layoutManager = LinearLayoutManager(this)
-        // TODO add itemDecorator to add margins between items. get rid of padding in [movie_item]
+        movies_recycler.addItemDecoration(
+                SpaceItemDecoration(this, this.resources.getDimension(R.dimen.margin_xsmall))
+        )
     }
 }
