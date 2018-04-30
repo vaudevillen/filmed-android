@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@color/black"
     android:padding="@dimen/margin_small"
-    tools:context=".MoviesActivity">
+    tools:context=".presentation.MoviesActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/movies_recycler"

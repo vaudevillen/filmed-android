@@ -6,7 +6,7 @@ import me.joshshin.filmed.BuildConfig
 /**
  * Created by Josh Shin on 4/28/18
  *
- * Version of Log that only runs in Debug builds
+ * Wrapper for Log that only logs in Debug builds
  * @see [android.util.Log]
  */
 object Logger {

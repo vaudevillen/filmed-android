@@ -1,10 +1,11 @@
-package me.joshshin.filmed
+package me.joshshin.filmed.presentation
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import me.joshshin.filmed.adapters.MoviesAdapter
 import kotlinx.android.synthetic.main.movies_activity.*
+import me.joshshin.filmed.R
 
 class MoviesActivity : AppCompatActivity() {
 
