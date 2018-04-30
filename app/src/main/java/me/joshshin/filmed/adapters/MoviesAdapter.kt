@@ -2,7 +2,6 @@ package me.joshshin.filmed.adapters
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +12,11 @@ import me.joshshin.filmed.adapters.MoviesAdapter.MoviesViewHolder
 import me.joshshin.domain.dataProvider.DataCallback
 import me.joshshin.domain.dataProvider.DataCallbackException
 import kotlinx.android.synthetic.main.movie_item.view.*
-import me.joshshin.filmed.BuildConfig
 import me.joshshin.datalayer.network.FilmedApiConstants.BASE_IMAGE_URL
 import me.joshshin.domain.models.FilmedMovie
 import me.joshshin.filmed.FilmedConfig
+import me.joshshin.filmed.utils.Logger
+import me.joshshin.filmed.utils.runOnUiThread
 
 /**
  * Created by Josh Shin on 4/15/18
@@ -42,16 +42,15 @@ class MoviesAdapter(private val context: Context) : RecyclerView.Adapter<MoviesV
         return object : DataCallback<List<FilmedMovie>> {
             override fun onComplete(data: List<FilmedMovie>) {
                 movies = data
-                notifyDataSetChanged()
+                runOnUiThread { notifyDataSetChanged() }
             }
             override fun onError(error: DataCallbackException) {
                 Toast.makeText(context, "Error downloading movies", Toast.LENGTH_LONG).show()
-                if (BuildConfig.DEBUG) {
-                    Log.e("Fetch Movies", error.message)
-                }
+                Logger.e(this, "${error.message}")
             }
         }
     }
+
     private fun fetchMovies() {
         FilmedConfig.moviesProvider.provideData(generateMoviesCallback())
     }
