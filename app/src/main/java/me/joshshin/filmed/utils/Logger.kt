@@ -10,7 +10,7 @@ import me.joshshin.filmed.BuildConfig
  * @see [android.util.Log]
  */
 object Logger {
-    private fun returnIfDebug() {
+    private fun returnIfNotDebug() {
         if (!BuildConfig.DEBUG) return
     }
 
@@ -19,59 +19,59 @@ object Logger {
     }
 
     fun v(clazz: Any, msg: String) {
-        returnIfDebug()
+        returnIfNotDebug()
         Log.v(getTag(clazz), msg)
     }
 
     fun v(clazz: Any, msg: String, tr: Throwable) {
-        returnIfDebug()
+        returnIfNotDebug()
         Log.v(getTag(clazz), msg, tr)
     }
 
 
     fun d(clazz: Any, msg: String) {
-        returnIfDebug()
+        returnIfNotDebug()
         Log.d(getTag(clazz), msg)
     }
 
 
     fun d(clazz: Any, msg: String, tr: Throwable) {
-        returnIfDebug()
+        returnIfNotDebug()
         Log.d(getTag(clazz), msg, tr)
     }
 
     fun i(clazz: Any, msg: String) {
-        returnIfDebug()
+        returnIfNotDebug()
         Log.i(getTag(clazz), msg)
     }
 
     fun i(clazz: Any, msg: String, tr: Throwable) {
-        returnIfDebug()
+        returnIfNotDebug()
         Log.i(getTag(clazz), msg, tr)
     }
 
     fun w(clazz: Any, msg: String) {
-        returnIfDebug()
+        returnIfNotDebug()
         Log.w(getTag(clazz), msg)
     }
 
     fun w(clazz: Any, msg: String, tr: Throwable) {
-        returnIfDebug()
+        returnIfNotDebug()
         Log.w(getTag(clazz), msg, tr)
     }
 
     fun w(clazz: Class<*>, tr: Throwable) {
-        returnIfDebug()
+        returnIfNotDebug()
         Log.w(getTag(clazz), tr)
     }
 
     fun e(clazz: Any, msg: String) {
-        returnIfDebug()
+        returnIfNotDebug()
         Log.e(getTag(clazz), msg)
     }
 
     fun e(clazz: Any, msg: String, tr: Throwable) {
-        returnIfDebug()
+        returnIfNotDebug()
         Log.e(getTag(clazz), msg, tr)
     }
 
