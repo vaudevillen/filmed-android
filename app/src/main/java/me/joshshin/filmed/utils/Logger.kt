@@ -11,7 +11,7 @@ import me.joshshin.filmed.BuildConfig
  */
 object Logger {
     private fun returnIfDebug() {
-        if (BuildConfig.DEBUG) return
+        if (!BuildConfig.DEBUG) return
     }
 
     private fun getTag(clazz: Any): String {
