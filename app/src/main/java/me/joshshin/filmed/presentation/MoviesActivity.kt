@@ -11,7 +11,7 @@ class MoviesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.movies_activity)
+        setContentView(R.layout.filmed_default_container)
 
         movies_recycler.adapter = MoviesAdapter(this)
         movies_recycler.layoutManager = LinearLayoutManager(this)
