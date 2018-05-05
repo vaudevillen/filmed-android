@@ -8,4 +8,11 @@
         <item name="colorAccent">@color/sky_blue</item>
     </style>
 
+    <style name="FilmedCollapsingToolbarTitle">
+        <!-- Customize your theme here. -->
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/stripes</item>
+        <item name="android:textSize">70sp</item>
+    </style>
+
 </resources>

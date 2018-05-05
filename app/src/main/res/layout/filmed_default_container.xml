@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/filmed_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
@@ -16,20 +17,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
-            app:contentScrim="@color/inky_blue"
-            app:expandedTitleMarginEnd="64dp"
-            app:expandedTitleMarginStart="48dp"
+            app:collapsedTitleGravity="center"
+            app:title="@string/filmed"
+            app:collapsedTitleTextAppearance="@style/FilmedCollapsingToolbarTitle"
+            app:expandedTitleGravity="center"
+            app:contentScrim="@color/navy_blue"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <ImageView
-                android:id="@+id/image_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/collapsing_toolbar_movie_img"
-                app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="0.5" />
+            <include layout="@layout/filmed_expanded_toolbar_image" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -37,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="58dp"
                 android:title="@string/filmed"
+                style="@style/FilmedCollapsingToolbarTitle"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
