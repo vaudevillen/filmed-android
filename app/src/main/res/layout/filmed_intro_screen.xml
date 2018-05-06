@@ -32,12 +32,12 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/powerdBy"
+        android:id="@+id/powered_by"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/margin_small"
         android:fontFamily="@font/bauhaus_93"
-        android:text="powered by"
+        android:text="@string/powered_by"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/logo_tmbd"
         app:layout_constraintEnd_toStartOf="@id/logo_tmbd"
