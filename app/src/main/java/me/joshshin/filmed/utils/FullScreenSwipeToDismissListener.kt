@@ -15,7 +15,7 @@ import kotlin.math.roundToInt
 class FullScreenSwipeToDismissListener : View.OnTouchListener {
     var initalX = 0f
     var initialY = 0f
-    val swipeThreshold = 0.2f
+    val swipeThreshold = 1f
 
     override fun onTouch(v: View, event: MotionEvent): Boolean {
         return when (event.action) {
@@ -42,8 +42,7 @@ class FullScreenSwipeToDismissListener : View.OnTouchListener {
                 val xDelta = finalX - initalX
                 val yDelta = finalY - initialY
                 val transformedParams = v.layoutParams as FrameLayout.LayoutParams
-                if (xDelta.absoluteValue > swipeThreshold ||
-                        yDelta.absoluteValue > swipeThreshold) {
+                if (xDelta.absoluteValue > swipeThreshold) {
                     if (xDelta > 0) {
                         transformedParams.marginStart += v.width
                         transformedParams.marginEnd -= v.width
