@@ -1,5 +1,8 @@
 package me.joshshin.filmed.utils
 
+import android.graphics.Rect
+import android.support.transition.Explode
+import android.support.transition.Transition
 import android.support.transition.TransitionManager
 import android.view.MotionEvent
 import android.view.View
@@ -13,19 +16,19 @@ import kotlin.math.roundToInt
  */
 
 class FullScreenSwipeToDismissListener : View.OnTouchListener {
-    var initalX = 0f
+    var initialX = 0f
     var initialY = 0f
     val swipeThreshold = 1f
 
     override fun onTouch(v: View, event: MotionEvent): Boolean {
         return when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-                initalX = event.x
+                initialX = event.x
                 initialY = event.y
                 true
             }
             MotionEvent.ACTION_MOVE -> {
-                val xDelta = event.x - initalX
+                val xDelta = event.x - initialX
                 val yDelta = event.y - initialY
                 val transformedParams = v.layoutParams as FrameLayout.LayoutParams
                 transformedParams.marginStart += xDelta.roundToInt()
@@ -37,42 +40,29 @@ class FullScreenSwipeToDismissListener : View.OnTouchListener {
                 true
             }
             MotionEvent.ACTION_UP -> {
-                val finalX = event.x
-                val finalY = event.y
-                val xDelta = finalX - initalX
-                val yDelta = finalY - initialY
-                val transformedParams = v.layoutParams as FrameLayout.LayoutParams
-                if (xDelta.absoluteValue > swipeThreshold) {
-                    if (xDelta > 0) {
-                        transformedParams.marginStart += v.width
-                        transformedParams.marginEnd -= v.width
-                    } else {
-                        transformedParams.marginStart -= v.width
-                        transformedParams.marginEnd += v.height
+                val xDelta = event.x - initialX
+                val yDelta = event.y - initialY
+                if (xDelta.absoluteValue > swipeThreshold || yDelta.absoluteValue > swipeThreshold) {
+                    val rect = Rect()
+                    v.getGlobalVisibleRect(rect)
+                    val explosion = Explode().apply {
+                        duration = 400
+                        epicenterCallback = object : Transition.EpicenterCallback() {
+                            override fun onGetEpicenter(transition: Transition) = rect
+                        }
                     }
-                    if (yDelta > 0) {
-                        transformedParams.topMargin += v.height
-                        transformedParams.bottomMargin -= v.height
-                    } else {
-                        transformedParams.topMargin -= v.height
-                        transformedParams.bottomMargin += v.height
-                    }
-                    v.layoutParams = transformedParams
-                    (v.parent as View).invalidate()
-                    TransitionManager.beginDelayedTransition(v.parent as ViewGroup)
-                    runOnUiThreadDelayed(700, {
-                        v.setGone()
-                    })
+                    TransitionManager.beginDelayedTransition((v.parent as ViewGroup), explosion)
+                    (v.parent as ViewGroup).removeView(v)
                 } else {
+                    val transformedParams = v.layoutParams as FrameLayout.LayoutParams
                     transformedParams.marginStart = 0
                     transformedParams.marginEnd = 0
                     transformedParams.topMargin = 0
                     transformedParams.bottomMargin = 0
                     v.layoutParams = transformedParams
                     TransitionManager.beginDelayedTransition(v.parent as ViewGroup)
-                    (v.parent as View).invalidate()
                 }
-                true
+                return true
             }
             else -> true
         }
