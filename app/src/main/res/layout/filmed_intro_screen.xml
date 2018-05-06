@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/intro_screen_container"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/intro_image"
@@ -18,16 +18,47 @@
          />
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/stripes"
         android:text="@string/filmed"
         android:textAllCaps="true"
         android:textColor="@color/white"
-        android:fontFamily="@font/stripes"
         android:textSize="70sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/powerdBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:fontFamily="@font/bauhaus_93"
+        android:text="powered by"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/logo_tmbd"
+        app:layout_constraintEnd_toStartOf="@id/logo_tmbd"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="@id/title"
+        app:layout_constraintTop_toTopOf="@id/logo_tmbd"
+        app:layout_constraintVertical_bias="0"
+        />
+
+    <ImageView
+        android:id="@+id/logo_tmbd"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/logo_tmbd"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/title"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="@id/title"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintVertical_bias="0"
+        />
 
 </android.support.constraint.ConstraintLayout>

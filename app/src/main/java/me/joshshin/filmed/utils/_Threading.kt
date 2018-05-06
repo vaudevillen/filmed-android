@@ -14,5 +14,5 @@ internal fun runOnUiThread(fn: () -> Unit) {
 }
 
 internal fun runOnUiThreadDelayed(delayedTime: Long, fn: () -> Unit) {
-    mainHandler.postDelayed(fn, 100)
+    mainHandler.postDelayed(fn, delayedTime)
 }
