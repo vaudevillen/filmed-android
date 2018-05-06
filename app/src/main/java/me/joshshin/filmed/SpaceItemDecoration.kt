@@ -1,4 +1,4 @@
-package me.joshshin.filmed.presentation
+package me.joshshin.filmed
 
 import android.content.Context
 import android.graphics.Rect
