@@ -26,15 +26,7 @@
             app:layout_collapseParallaxMultiplier="0.5"
             android:src="@drawable/collapsing_toolbar_movie_img" />
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="58dp"
-            android:title="@string/filmed"
-            app:layout_collapseMode="pin"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        <include layout="@layout/filmed_toolbar" />
 
     </android.support.design.widget.CollapsingToolbarLayout>
 
