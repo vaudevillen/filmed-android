@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fitsSystemWindows="true">
+    <!--TODO decide if actually going to use this-->
 
     <android.support.design.widget.CollapsingToolbarLayout
         android:id="@+id/collapse_toolbar"

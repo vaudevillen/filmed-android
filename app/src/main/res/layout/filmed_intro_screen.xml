@@ -2,31 +2,32 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/appbar_image_container"
+    android:id="@+id/intro_screen_container"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/image_toolbar"
+        android:id="@+id/intro_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
         android:src="@drawable/in_the_mood_for_love"
-        app:layout_constraintBottom_toBottomOf="@id/appbar_image_container"
-        app:layout_constraintEnd_toEndOf="@id/appbar_image_container"
-        app:layout_constraintStart_toStartOf="@id/appbar_image_container"
-        app:layout_constraintTop_toTopOf="@id/appbar_image_container"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
          />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FILMED"
+        android:text="@string/filmed"
+        android:textAllCaps="true"
         android:textColor="@color/white"
         android:fontFamily="@font/stripes"
         android:textSize="70sp"
-        app:layout_constraintEnd_toEndOf="@id/appbar_image_container"
-        app:layout_constraintStart_toStartOf="@id/appbar_image_container"
-        app:layout_constraintTop_toTopOf="@id/appbar_image_container"
-        app:layout_constraintBottom_toBottomOf="@id/appbar_image_container"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>
