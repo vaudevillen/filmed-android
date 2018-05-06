@@ -1,4 +1,4 @@
-package me.joshshin.filmed
+package me.joshshin.filmed.utils
 
 import android.support.transition.TransitionManager
 import android.view.MotionEvent
