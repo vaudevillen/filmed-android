@@ -3,6 +3,7 @@ package me.joshshin.filmed.presentation
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.ViewGroup
 import kotlinx.android.synthetic.main.filmed_intro_screen.*
 import kotlinx.android.synthetic.main.movies_recycler.*
 import me.joshshin.filmed.R
@@ -20,7 +21,7 @@ class MoviesActivity : AppCompatActivity(){
         setContentView(R.layout.movies_activity)
 
         if (hasSeenIntroImage) {
-            intro_screen_container.setGone()
+            (intro_screen_container.parent as ViewGroup).removeView(intro_screen_container)
         } else {
             intro_screen_container.setOnTouchListener(FullScreenSwipeToDismissListener())
         }
