@@ -1,11 +1,12 @@
 package me.joshshin.filmed
 
 import android.support.transition.TransitionManager
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import me.joshshin.filmed.utils.runOnUiThreadDelayed
+import me.joshshin.filmed.utils.setGone
 import kotlin.math.absoluteValue
 import kotlin.math.roundToInt
 
@@ -16,6 +17,7 @@ import kotlin.math.roundToInt
 class FullScreenSwipeToDismissListener : View.OnTouchListener {
     var initalX = 0f
     var initialY = 0f
+    val swipeThreshold = 0.2f
 
     override fun onTouch(v: View, event: MotionEvent): Boolean {
         return when (event.action) {
@@ -34,7 +36,6 @@ class FullScreenSwipeToDismissListener : View.OnTouchListener {
                 transformedParams.bottomMargin -= yDelta.roundToInt()
                 v.layoutParams = transformedParams
                 (v.parent as View).invalidate()
-                Log.d("@@@", "move move move ${event.rawX}")
                 true
             }
             MotionEvent.ACTION_UP -> {
@@ -43,8 +44,8 @@ class FullScreenSwipeToDismissListener : View.OnTouchListener {
                 val xDelta = finalX - initalX
                 val yDelta = finalY - initialY
                 val transformedParams = v.layoutParams as FrameLayout.LayoutParams
-                if (xDelta.absoluteValue > 30 ||
-                        yDelta.absoluteValue > 30) {
+                if (xDelta.absoluteValue > swipeThreshold ||
+                        yDelta.absoluteValue > swipeThreshold) {
                     if (xDelta > 0) {
                         transformedParams.marginStart += v.width
                         transformedParams.marginEnd -= v.width
@@ -60,9 +61,11 @@ class FullScreenSwipeToDismissListener : View.OnTouchListener {
                         transformedParams.bottomMargin += v.height
                     }
                     v.layoutParams = transformedParams
-                    v.visibility = View.GONE
-                    TransitionManager.beginDelayedTransition(v.parent as ViewGroup)
                     (v.parent as View).invalidate()
+                    TransitionManager.beginDelayedTransition(v.parent as ViewGroup)
+                    runOnUiThreadDelayed(700, {
+                        v.setGone()
+                    })
                 } else {
                     transformedParams.marginStart = 0
                     transformedParams.marginEnd = 0

@@ -12,3 +12,7 @@ private val mainHandler = Handler(Looper.getMainLooper())
 internal fun runOnUiThread(fn: () -> Unit) {
     mainHandler.post(fn)
 }
+
+internal fun runOnUiThreadDelayed(delayedTime: Long, fn: () -> Unit) {
+    mainHandler.postDelayed(fn, 100)
+}
