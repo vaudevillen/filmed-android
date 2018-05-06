@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.filmed_intro_screen.*
 import kotlinx.android.synthetic.main.movies_recycler.*
 import me.joshshin.filmed.R
-import me.joshshin.filmed.adapters.MoviesAdapter
+import me.joshshin.filmed.presentation.adapters.MoviesAdapter
 import me.joshshin.filmed.utils.FullScreenSwipeToDismissListener
 import me.joshshin.filmed.utils.setGone
 

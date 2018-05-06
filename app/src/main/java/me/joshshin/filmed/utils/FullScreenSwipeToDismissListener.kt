@@ -5,8 +5,6 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import me.joshshin.filmed.utils.runOnUiThreadDelayed
-import me.joshshin.filmed.utils.setGone
 import kotlin.math.absoluteValue
 import kotlin.math.roundToInt
 
