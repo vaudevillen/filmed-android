@@ -1,22 +1,22 @@
-package me.joshshin.filmed.adapters
+package me.joshshin.filmed.presentation.adapters
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.squareup.picasso.Picasso
 import me.joshshin.filmed.R
-import me.joshshin.filmed.adapters.MoviesAdapter.MoviesViewHolder
+import me.joshshin.filmed.presentation.adapters.MoviesAdapter.MoviesViewHolder
 import me.joshshin.domain.dataProvider.DataCallback
 import me.joshshin.domain.dataProvider.DataCallbackException
 import kotlinx.android.synthetic.main.movie_item.view.*
-import me.joshshin.filmed.BuildConfig
-import me.joshshin.datalayer.MoviesProvider
 import me.joshshin.datalayer.network.FilmedApiConstants.BASE_IMAGE_URL
 import me.joshshin.domain.models.FilmedMovie
+import me.joshshin.filmed.FilmedConfig
+import me.joshshin.filmed.utils.Logger
+import me.joshshin.filmed.utils.runOnUiThread
 
 /**
  * Created by Josh Shin on 4/15/18
@@ -24,8 +24,6 @@ import me.joshshin.domain.models.FilmedMovie
 
 class MoviesAdapter(private val context: Context) : RecyclerView.Adapter<MoviesViewHolder>() {
     private var movies: List<FilmedMovie> = listOf()
-
-    private val moviesProvider = MoviesProvider()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false)
@@ -44,18 +42,17 @@ class MoviesAdapter(private val context: Context) : RecyclerView.Adapter<MoviesV
         return object : DataCallback<List<FilmedMovie>> {
             override fun onComplete(data: List<FilmedMovie>) {
                 movies = data
-                notifyDataSetChanged()
+                runOnUiThread { notifyDataSetChanged() }
             }
             override fun onError(error: DataCallbackException) {
                 Toast.makeText(context, "Error downloading movies", Toast.LENGTH_LONG).show()
-                if (BuildConfig.DEBUG) {
-                    Log.e("Fetch Movies", error.message)
-                }
+                Logger.e(this, "${error.message}")
             }
         }
     }
+
     private fun fetchMovies() {
-        moviesProvider.provideData(generateMoviesCallback())
+        FilmedConfig.moviesProvider.provideData(generateMoviesCallback())
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
