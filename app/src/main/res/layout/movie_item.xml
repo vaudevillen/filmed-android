@@ -8,6 +8,10 @@
         android:id="@+id/backdrop_image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="@dimen/margin_regular"
+        android:paddingEnd="@dimen/margin_regular"
+        android:paddingTop="@dimen/margin_small"
+        android:paddingBottom="@dimen/margin_small"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"/>
 

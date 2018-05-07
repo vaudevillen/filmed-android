@@ -29,9 +29,6 @@ class MoviesActivity : AppCompatActivity(){
 
         movies_recycler.adapter = MoviesAdapter(this)
         movies_recycler.layoutManager = LinearLayoutManager(this)
-        movies_recycler.addItemDecoration(
-                SpaceItemDecoration(this, this.resources.getDimension(R.dimen.margin_xsmall))
-        )
     }
 
 }
