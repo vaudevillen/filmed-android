@@ -9,5 +9,5 @@ import me.joshshin.domain.models.FilmedMovie
  */
 
 object FilmedConfig {
-    val moviesProvider: DataProvider<List<FilmedMovie>> = MoviesProvider()
+    val moviesProvider: DataProvider<FilmedMovie> = MoviesProvider()
 }

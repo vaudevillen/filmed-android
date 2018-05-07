@@ -15,10 +15,10 @@ import retrofit2.Response
  * Created by Josh Shin on 4/21/18
  */
 
-class MoviesProvider : DataProvider<List<FilmedMovie>> {
+class MoviesProvider : DataProvider<FilmedMovie> {
     private val moviesClient = FilmedApi.createService<MoviesService>()
 
-    override fun provideData(callback: DataCallback<List<FilmedMovie>>) {
+    override fun provideData(callback: DataCallback<FilmedMovie>) {
         moviesClient.getPopularMovies().enqueue(object : Callback<MoviesResponse> {
             override fun onFailure(call: Call<MoviesResponse>?, t: Throwable?) {
                 callback.onError(DataCallbackException(t?.message
