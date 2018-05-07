@@ -27,9 +27,7 @@ import me.joshshin.filmed.utils.toggleVisibility
 
 class MoviesAdapter(private val context: Context) : RecyclerView.Adapter<MoviesViewHolder>() {
     private var movies: List<FilmedMovie> = listOf()
-
-    private var lastSelectedPosition: Int = -1
-
+    
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false)
         return MoviesViewHolder(view)
