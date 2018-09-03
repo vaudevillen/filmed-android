@@ -5,6 +5,7 @@ import android.support.transition.Explode
 import android.support.transition.Transition
 import android.support.transition.TransitionManager
 import android.view.MotionEvent
+import android.view.MotionEvent.*
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
@@ -22,12 +23,12 @@ class FullScreenSwipeToDismissListener : View.OnTouchListener {
 
     override fun onTouch(v: View, event: MotionEvent): Boolean {
         return when (event.action) {
-            MotionEvent.ACTION_DOWN -> {
+            ACTION_DOWN -> {
                 initialX = event.x
                 initialY = event.y
                 true
             }
-            MotionEvent.ACTION_MOVE -> {
+            ACTION_MOVE -> {
                 val xDelta = event.x - initialX
                 val yDelta = event.y - initialY
                 val transformedParams = v.layoutParams as FrameLayout.LayoutParams
@@ -39,7 +40,7 @@ class FullScreenSwipeToDismissListener : View.OnTouchListener {
                 (v.parent as View).invalidate()
                 true
             }
-            MotionEvent.ACTION_UP -> {
+            ACTION_UP -> {
                 val xDelta = event.x - initialX
                 val yDelta = event.y - initialY
                 if (xDelta.absoluteValue > swipeThreshold || yDelta.absoluteValue > swipeThreshold) {
