@@ -23,6 +23,7 @@ dependencies {
     implementation "com.android.support:design:$android_support_lib"
 
     implementation project(':data-layer')
+    implementation project(':domain')
 
     //Leak Canary
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
