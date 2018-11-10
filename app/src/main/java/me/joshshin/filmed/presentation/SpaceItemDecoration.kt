@@ -17,7 +17,7 @@ import me.joshshin.filmed.utils.convertDpToPixel
 class SpaceItemDecoration(context: Context, spaceSize: Float) : RecyclerView.ItemDecoration() {
     private val spaceSizePixels = convertDpToPixel(spaceSize, context).toInt()
 
-    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State?) {
+    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
         super.getItemOffsets(outRect, view, parent, state)
 
         if (parent.getChildAdapterPosition(view) == 0) return
@@ -28,6 +28,5 @@ class SpaceItemDecoration(context: Context, spaceSize: Float) : RecyclerView.Ite
             outRect.top = spaceSizePixels
         }
     }
-
 }
 

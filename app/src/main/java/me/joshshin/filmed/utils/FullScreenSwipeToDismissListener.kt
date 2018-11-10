@@ -17,15 +17,21 @@ import kotlin.math.roundToInt
  */
 
 class FullScreenSwipeToDismissListener : View.OnTouchListener {
-    var initialX = 0f
-    var initialY = 0f
-    val swipeThreshold = 1f
+    companion object {
+        private const val MINIMUM_SWIPE_DISTANCE = 60f
+        private const val ANIMATION_DURATION = 300L
+    }
+
+    private var initialX = 0f
+    private var initialY = 0f
+    private var onDownTouchedTime: Long = 0
 
     override fun onTouch(v: View, event: MotionEvent): Boolean {
         return when (event.action) {
             ACTION_DOWN -> {
                 initialX = event.x
                 initialY = event.y
+                onDownTouchedTime = event.eventTime
                 true
             }
             ACTION_MOVE -> {
@@ -43,11 +49,13 @@ class FullScreenSwipeToDismissListener : View.OnTouchListener {
             ACTION_UP -> {
                 val xDelta = event.x - initialX
                 val yDelta = event.y - initialY
-                if (xDelta.absoluteValue > swipeThreshold || yDelta.absoluteValue > swipeThreshold) {
+
+                val downToUpTime = onDownTouchedTime - event.eventTime
+                if (didExceedMinSwipeDistance(xDelta, yDelta) && downToUpTime < 200) {
                     val rect = Rect()
                     v.getGlobalVisibleRect(rect)
                     val explosion = Explode().apply {
-                        duration = 400
+                        duration = ANIMATION_DURATION
                         epicenterCallback = object : Transition.EpicenterCallback() {
                             override fun onGetEpicenter(transition: Transition) = rect
                         }
@@ -67,5 +75,9 @@ class FullScreenSwipeToDismissListener : View.OnTouchListener {
             }
             else -> true
         }
+    }
+
+    private fun didExceedMinSwipeDistance(xDelta: Float, yDelta: Float): Boolean {
+        return xDelta.absoluteValue > MINIMUM_SWIPE_DISTANCE || yDelta.absoluteValue > MINIMUM_SWIPE_DISTANCE
     }
 }
