@@ -12,21 +12,24 @@ abstract class DataProvider<D> {
     abstract fun provideData(callback: DataCallback<D>)
 
     /**
-     * Further lambda convenience.
-     * This wraps up all the convenience of above. You can feed the [onComplete]
-     * and [onError] lambdas as arguments, and it'll call your [provideData]
-     * function as well.
+     * Lambda convenience.
+     * You can feed the [onComplete] and [onError] lambdas as arguments,
+     * and it'll create the [DataCallback] for you and call your
+     * [provideData] function as well.
      */
-    fun provideData(doOnComplete: (D) -> Unit, doOnError: (DataCallbackException) -> Unit) {
+    fun provideData(onComplete: (D) -> Unit, onError: (DataCallbackException) -> Unit) {
         val callback = object : DataCallback<D> {
+            inline fun doOnComplete(d: D) = onComplete
+            inline fun doOnError(exception: DataCallbackException) = onError
+
             override fun onComplete(t: D) {
                 doOnComplete(t)
             }
-
             override fun onError(exception: DataCallbackException) {
                 doOnError(exception)
             }
         }
+
         provideData(callback)
     }
 }
