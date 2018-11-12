@@ -1,7 +1,5 @@
 package me.joshshin.filmed.presentation.adapters
 
-import android.arch.lifecycle.Observer
-import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +7,6 @@ import android.view.ViewGroup
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.movie_item.view.*
 import me.joshshin.datalayer.network.FilmedApiConstants.BASE_IMAGE_URL
-import me.joshshin.domain.data.DataState
 import me.joshshin.domain.models.FilmedMovie
 import me.joshshin.filmed.R
 import me.joshshin.filmed.presentation.adapters.MoviesAdapter.MoviesViewHolder

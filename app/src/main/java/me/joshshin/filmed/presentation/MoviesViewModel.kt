@@ -5,16 +5,13 @@ import android.arch.lifecycle.ViewModel
 import me.joshshin.datalayer.MoviesProvider
 import me.joshshin.domain.data.DataState
 import me.joshshin.domain.models.FilmedMovie
+import me.joshshin.filmed.FilmedConfig
 
 /**
  * Created by Josh Shin on 11/11/18
  */
 
 class MoviesViewModel : ViewModel() {
-
-    companion object {
-        private val moviesProvider = MoviesProvider()
-    }
 
     val moviesLiveData = MutableLiveData<DataState<List<FilmedMovie>>>()
 
@@ -31,7 +28,7 @@ class MoviesViewModel : ViewModel() {
     }
 
     private fun fetchMovies() {
-        moviesProvider.provideData(
+        FilmedConfig.moviesProvider.provideData(
                 onComplete = {
                     moviesLiveData.value = DataState(DataState.State.Success, it)
                 },

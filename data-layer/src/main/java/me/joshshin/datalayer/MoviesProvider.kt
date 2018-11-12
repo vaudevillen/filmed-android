@@ -13,17 +13,14 @@ import retrofit2.Response
  * Created by Josh Shin on 4/21/18
  */
 
-object MoviesProvider: DataProvider<List<FilmedMovie>> {
+object MoviesProvider: DataProvider<List<FilmedMovie>>() {
+
     private val moviesClient = FilmedApi.createService<MoviesService>()
-
-    override var onProvideSuccess: (List<FilmedMovie>) -> Unit = {}
-
-    override var onProvideError: (String) -> Unit = {}
 
     override fun provideData() {
         moviesClient.getPopularMovies().enqueue(object : Callback<MoviesResponse> {
             override fun onFailure(call: Call<MoviesResponse>?, t: Throwable?) {
-                onProvideError(t?.message
+                onError(t?.message
                         ?: "api failure")
             }
 
@@ -31,19 +28,13 @@ object MoviesProvider: DataProvider<List<FilmedMovie>> {
                 if (response?.body()?.results != null) {
                     val moviesResponse = response.body()
                     moviesResponse?.results?.let {
-                        onProvideSuccess(it)
+                        onComplete(it)
                     }
                 } else {
-                    onProvideError("FilmedMoviesResponse or FilmedMoviesResponse.results was null")
+                    onError("FilmedMoviesResponse or FilmedMoviesResponse.results was null")
                 }
             }
         })
-    }
-
-    fun provideData(onComplete: (List<FilmedMovie>) -> Unit, onError: (String) -> Unit) {
-        onProvideSuccess = onComplete
-        onProvideError = onError
-        provideData()
     }
 }
 
