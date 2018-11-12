@@ -4,8 +4,8 @@ package me.joshshin.domain.dataProvider
  * Created by Josh Shin on 4/22/18
  */
 
-interface DataCallback<T> {
-    fun onComplete(data: List<T>)
+interface DataCallback<in D> {
+    fun onComplete(data: D)
     fun onError(error: DataCallbackException)
 }
 

@@ -10,7 +10,7 @@ android.buildTypes.each {
 }
 
 dependencies {
-    api project(':domain')
+    implementation project(':domain')
 
     //Network
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
