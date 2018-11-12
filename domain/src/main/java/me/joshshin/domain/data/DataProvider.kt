@@ -17,11 +17,8 @@ abstract class DataProvider<D> {
      * and it'll create the [DataCallback] for you and call your
      * [provideData] function as well.
      */
-    fun provideData(onComplete: (D) -> Unit, onError: (DataCallbackException) -> Unit) {
+    fun provideData(doOnComplete: (D) -> Unit, doOnError: (DataCallbackException) -> Unit) {
         val callback = object : DataCallback<D> {
-            inline fun doOnComplete(d: D) = onComplete
-            inline fun doOnError(exception: DataCallbackException) = onError
-
             override fun onComplete(t: D) {
                 doOnComplete(t)
             }
