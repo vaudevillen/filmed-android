@@ -28,10 +28,10 @@ class MoviesViewModel : ViewModel() {
 
     private fun fetchMovies() {
         FilmedConfig.moviesProvider.provideData(
-                onComplete = {
+                doOnComplete = {
                     moviesLiveData.value = DataState(DataState.State.Success, it)
                 },
-                onError = {
+                doOnError = {
                     moviesLiveData.value = DataState(DataState.State.Error(0), null)
                 }
         )

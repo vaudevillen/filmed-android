@@ -7,23 +7,9 @@ package me.joshshin.domain.data
 abstract class DataProvider<D> {
 
     /**
-     * For a little bit of lambda convenience.
-     * Set what you want to happen when getting the data
-     * is successful.
-     */
-    open var onComplete: (D) -> Unit = { /* no-op */ }
-
-    /**
-     * For a little bit of lambda convenience.
-     * Set what you want to happen when
-     * there's an error getting the data
-     */
-    open var onError: (String) -> Unit = { /* no-op */ }
-
-    /**
      * Implementation details of getting the data goes here.
      */
-    abstract fun provideData()
+    abstract fun provideData(callback: DataCallback<D>)
 
     /**
      * Further lambda convenience.
@@ -31,9 +17,16 @@ abstract class DataProvider<D> {
      * and [onError] lambdas as arguments, and it'll call your [provideData]
      * function as well.
      */
-    fun provideData(onComplete: (D) -> Unit, onError: (String) -> Unit) {
-        this.onComplete = onComplete
-        this.onError = onError
-        provideData()
+    fun provideData(doOnComplete: (D) -> Unit, doOnError: (DataCallbackException) -> Unit) {
+        val callback = object : DataCallback<D> {
+            override fun onComplete(t: D) {
+                doOnComplete(t)
+            }
+
+            override fun onError(exception: DataCallbackException) {
+                doOnError(exception)
+            }
+        }
+        provideData(callback)
     }
 }
