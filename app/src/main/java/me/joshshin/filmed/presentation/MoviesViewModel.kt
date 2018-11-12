@@ -2,7 +2,6 @@ package me.joshshin.filmed.presentation
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import me.joshshin.datalayer.MoviesProvider
 import me.joshshin.domain.data.DataState
 import me.joshshin.domain.models.FilmedMovie
 import me.joshshin.filmed.FilmedConfig
