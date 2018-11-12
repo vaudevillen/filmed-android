@@ -6,6 +6,8 @@ import me.joshshin.domain.models.FilmedMovie
 
 /**
  * Created by Josh Shin on 11/11/18
+ *
+ * Wiring for connecting the data-layer to the app-layer.
  */
 
 object FilmedConfig {
