@@ -18,7 +18,13 @@ class MoviesActivity : AppCompatActivity(){
         private var hasSeenIntroImage =  false
     }
 
-    private val moviesAdapter = MoviesAdapter()
+    private val moviesViewModel by lazy {
+        ViewModelProviders.of(this)[MoviesViewModel::class.java]
+    }
+
+    private val moviesAdapter by lazy {
+        MoviesAdapter(this, moviesViewModel)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +48,6 @@ class MoviesActivity : AppCompatActivity(){
     }
 
     private fun setUpViewModel() {
-        val moviesViewModel = ViewModelProviders.of(this)[MoviesViewModel::class.java]
         moviesViewModel.getMovies()
 
         moviesViewModel.moviesLiveData.observe(this, Observer {
