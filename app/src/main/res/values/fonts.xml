@@ -2,4 +2,6 @@
 <resources>
     <integer name="font_weight_normal">400</integer>
     <string name="font_style_normal">normal</string>
+    <string name="font_style_light">light</string>
+    <string name="font_style_bold">bold</string>
 </resources>

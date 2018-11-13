@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <font
+        android:fontStyle="@string/font_style_normal"
+        android:fontWeight="@integer/font_weight_normal"
+        android:font="@font/futura"
+        app:fontStyle="@string/font_style_normal"
+        app:fontWeight="@integer/font_weight_normal"
+        app:font="@font/futura" />
+    <font
+        android:fontStyle="@string/font_style_light"
+        android:fontWeight="@integer/font_weight_normal"
+        android:font="@font/futura_light"
+        app:fontStyle="@string/font_style_light"
+        app:fontWeight="@integer/font_weight_normal"
+        app:font="@font/futura_light" />
+    <font
+        android:fontStyle="@string/font_style_bold"
+        android:fontWeight="@integer/font_weight_normal"
+        android:font="@font/futura_bold"
+        app:fontStyle="@string/font_style_bold"
+        app:fontWeight="@integer/font_weight_normal"
+        app:font="@font/futura_bold" />
+</font-family>

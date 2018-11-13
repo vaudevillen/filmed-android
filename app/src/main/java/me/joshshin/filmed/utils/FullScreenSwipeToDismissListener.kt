@@ -71,7 +71,7 @@ class FullScreenSwipeToDismissListener : View.OnTouchListener {
                     v.layoutParams = transformedParams
                     TransitionManager.beginDelayedTransition(v.parent as ViewGroup)
                 }
-                return true
+                true
             }
             else -> true
         }

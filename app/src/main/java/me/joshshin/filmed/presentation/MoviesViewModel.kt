@@ -14,7 +14,14 @@ class MoviesViewModel : ViewModel() {
 
     val moviesLiveData = MutableLiveData<DataState<List<FilmedMovie>>>()
 
-    val selectedMoviePosition = MutableLiveData<Int>()
+    /**
+     * Contains a pair of the previous and new selected movies.
+     * The first number is the previously selected position.
+     * The second number is the newly selected position.
+     *
+     * Initialized with a values of -1
+     */
+    val selectedMoviePositions = MutableLiveData<Pair<Int, Int>>().apply { value = -1 to -1 }
 
     fun getMovies() {
         if (moviesLiveData.value == null) {
@@ -23,6 +30,17 @@ class MoviesViewModel : ViewModel() {
         } else {
             // just setting off a call to trigger the observer by reposting the value
             moviesLiveData.value = moviesLiveData.value
+        }
+    }
+
+    fun selectMovie(position: Int) {
+        val oldPosiiton = selectedMoviePositions.value!!.second
+        if (oldPosiiton != position) {
+            // User selected a new movie
+            selectedMoviePositions.value = oldPosiiton to position
+        } else {
+            // User unselected the movie
+            selectedMoviePositions.value = oldPosiiton to -1
         }
     }
 
@@ -36,9 +54,4 @@ class MoviesViewModel : ViewModel() {
                 }
         )
     }
-
-    private fun selectMovie(position: Int) {
-        selectedMoviePosition.value = position
-    }
-
 }

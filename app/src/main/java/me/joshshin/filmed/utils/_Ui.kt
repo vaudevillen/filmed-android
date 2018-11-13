@@ -22,8 +22,12 @@ internal fun View.setVisible() {
     this.visibility = View.VISIBLE
 }
 
+internal fun View.isVisible(): Boolean{
+    return this.visibility == View.VISIBLE
+}
+
 internal fun View.toggleVisibility() {
-    if (this.visibility == View.VISIBLE) {
+    if (this.isVisible()) {
         this.setGone()
     } else {
         this.setVisible()

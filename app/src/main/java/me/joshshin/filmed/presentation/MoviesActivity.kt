@@ -55,6 +55,7 @@ class MoviesActivity : AppCompatActivity(){
 
             if (it.state == DataState.State.Success) {
                 moviesAdapter.movies = it.data!!
+                moviesAdapter.notifyDataSetChanged()
             }
         })
     }
