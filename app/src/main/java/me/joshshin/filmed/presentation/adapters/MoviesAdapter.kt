@@ -3,19 +3,14 @@ package me.joshshin.filmed.presentation.adapters
 import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.Observer
 import android.content.Context
-import android.support.transition.ChangeBounds
-import android.support.transition.ChangeImageTransform
-import android.support.transition.TransitionManager
-import android.support.transition.TransitionSet
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.view.animation.LinearInterpolator
 import android.widget.ImageView
-import android.widget.ImageView.ScaleType.CENTER_CROP
-import android.widget.ImageView.ScaleType.FIT_CENTER
+import android.widget.ImageView.ScaleType.*
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.movie_item.view.*
 import kotlinx.android.synthetic.main.movie_info_item.view.*
@@ -40,17 +35,17 @@ class MoviesAdapter(
 
     private val selectedMovieObserver: Observer<Pair<Int, Int>> = Observer {
         it ?: return@Observer
-        notifyItemChanged(it.first)
-        notifyItemChanged(it.second)
+        if (it.first != -1) notifyItemChanged(it.first)
+        if (it.second != -1) notifyItemChanged(it.second)
     }
 
     init {
-        moviesViewModel.selectedMoviePositions.observe(context as LifecycleOwner, selectedMovieObserver)
+        moviesViewModel.selectedMoviePosition.observe(context as LifecycleOwner, selectedMovieObserver)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false)
-        return MoviesViewHolder(view, this)
+        return MoviesViewHolder(view)
     }
 
     override fun getItemCount(): Int = movies.size
@@ -64,16 +59,12 @@ class MoviesAdapter(
                 moviesViewModel.selectMovie(position)
             }
 
-            moviesViewModel.selectedMoviePositions.value?.let { selectedMoviePosition ->
-                if (selectedMoviePosition.second == position) {
-                    expandImage(image, itemView, true)
-                    infoContainer.setVisible()
-                    TransitionManager.beginDelayedTransition(itemView as ViewGroup)
-                } else {
-                    expandImage(image, itemView, false)
-                    infoContainer.setGone()
-                    TransitionManager.beginDelayedTransition(itemView as ViewGroup)
-                }
+            if (moviesViewModel.selectedMoviePosition.value!!.second == position) {
+                toggleImageSize(image, itemView, true)
+                infoContainer.setVisible()
+            } else {
+                toggleImageSize(image, itemView, false)
+                infoContainer.setGone()
             }
 
             //TODO change image path i/r/t image size depending on screen density
@@ -81,30 +72,40 @@ class MoviesAdapter(
         }
     }
 
-    private fun expandImage(image: ImageView, root: View, shouldExpand: Boolean) {
-        val parent = root as ViewGroup
-        TransitionManager.beginDelayedTransition(parent, TransitionSet()
-                .addTransition(ChangeBounds())
-                .addTransition(ChangeImageTransform()))
+    private fun toggleImageSize(image: ImageView, root: View, shouldExpand: Boolean) {
         val params: ViewGroup.LayoutParams = image.layoutParams
+
         if (shouldExpand) {
             params.height = (image.height * 1.2f).toInt()
             params.width = (MATCH_PARENT * 1.2f).toInt()
             image.setPadding(0, 0, 0, 0)
             image.adjustViewBounds = false
+            image.animate()
+                    .scaleX(1.25f)
+                    .scaleY(1.25f)
+                    .alpha(1f)
+                    .setInterpolator(LinearInterpolator())
+                    .start()
         } else {
             val paddingSmall = context.resources.getDimension(R.dimen.margin_small).toInt()
             val paddingRegular = context.resources.getDimension(R.dimen.margin_regular).toInt()
             image.adjustViewBounds = true
-            params.width = MATCH_PARENT
-            params.height = WRAP_CONTENT
+            params.width = (image.height * 0.8f).toInt()
+            params.height = MATCH_PARENT
             image.setPadding(paddingRegular, paddingSmall, paddingRegular, paddingSmall)
+            image.animate()
+                    .scaleX(1.2f)
+                    .scaleY(1.2f)
+                    .alpha(1f)
+                    .setInterpolator(LinearInterpolator())
+                    .start()
         }
+
         image.layoutParams = params
         image.scaleType = if (shouldExpand) CENTER_CROP else FIT_CENTER
     }
 
-    class MoviesViewHolder(view: View, private val adapter: MoviesAdapter) : RecyclerView.ViewHolder(view) {
+    class MoviesViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val infoContainer = view.info_container
         val overview = view.overview
         val title = view.title

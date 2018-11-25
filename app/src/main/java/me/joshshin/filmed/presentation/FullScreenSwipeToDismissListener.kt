@@ -1,4 +1,4 @@
-package me.joshshin.filmed.utils
+package me.joshshin.filmed.presentation
 
 import android.graphics.Rect
 import android.support.transition.Explode
