@@ -6,8 +6,6 @@ buildscript {
         leak_canary_version = '1.6.1'
         picasso_version = '2.71828'
         androidx_version = '1.1.0'
-        rxandroid_version = '2.1.0'
-        rxjava_version = '2.2.1'
         retrofit_version = '2.7.1'
         okhttp_version = '3.10.0'
         constraint_version = '1.1.3'

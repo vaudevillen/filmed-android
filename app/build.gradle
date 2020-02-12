@@ -38,10 +38,6 @@ dependencies {
     // Picasso
     implementation "com.squareup.picasso:picasso:$picasso_version"
 
-    // Rx
-    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
-    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
-
     // Tests
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
