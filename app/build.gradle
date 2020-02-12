@@ -17,12 +17,12 @@ configurations.all { config ->
 }
 
 dependencies {
-    implementation "com.android.support:appcompat-v7:$android_support_lib"
-    implementation "com.android.support.constraint:constraint-layout:$constraint_version"
-    implementation "com.android.support:recyclerview-v7:$android_support_lib"
-    implementation "com.android.support:design:$android_support_lib"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    implementation "android.arch.lifecycle:extensions:1.1.1"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
 
     implementation project(':data-layer')
@@ -46,6 +46,6 @@ dependencies {
 
     // Tests
     testImplementation "junit:junit:$junit_version"
-    androidTestImplementation "com.android.support.test:runner:$android_testrunner_version"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 }

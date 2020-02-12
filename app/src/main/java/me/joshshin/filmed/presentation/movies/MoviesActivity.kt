@@ -1,9 +1,9 @@
 package me.joshshin.filmed.presentation.movies
 
-import android.arch.lifecycle.ViewModelProviders
-import android.support.v7.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.filmed_intro_screen.*
 import kotlinx.android.synthetic.main.movies_recycler.*

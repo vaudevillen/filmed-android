@@ -1,6 +1,6 @@
 package me.joshshin.filmed.presentation.movies
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import me.joshshin.domain.data.DataState
 import me.joshshin.domain.models.FilmedMovie

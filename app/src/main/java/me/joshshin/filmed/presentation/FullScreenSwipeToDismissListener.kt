@@ -1,9 +1,9 @@
 package me.joshshin.filmed.presentation
 
 import android.graphics.Rect
-import android.support.transition.Explode
-import android.support.transition.Transition
-import android.support.transition.TransitionManager
+import androidx.transition.Explode
+import androidx.transition.Transition
+import androidx.transition.TransitionManager
 import android.view.MotionEvent
 import android.view.MotionEvent.*
 import android.view.View
